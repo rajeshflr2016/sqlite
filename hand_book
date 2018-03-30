@@ -1,0 +1,15 @@
+/* ---
+
+Author By  : Rajesh
+Created    : March - 2018
+--- */
+*********** Features **********
+  - Serverless 
+  - Zero configration 
+  - Self-contained 
+  - Transactional sql database engine.
+  
+* All command need to check infront of dot.
+.show   - Default settings details
+.header on - sequence format  -- .mode column
+.schema tablename
