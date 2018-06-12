@@ -1,0 +1,16 @@
+DROP PROCEDURE IF EXISTS `sp_process_user`;
+DELIMITER $$
+CREATE PROCEDURE `sp_process_user`(IN `var_user_id` INT(11), `var_user_type` CHAR(2), `var_action` VARCHAR(20))
+BEGIN
+	IF var_action = 'DELETE' THEN
+		IF var_user_type = 'CU' THEN
+			DELETE FROM tbl_subscriber_tags WHERE chat_user_id = var_user_id;
+			DELETE FROM tbl_question_answers WHERE chat_user_id = var_user_id;
+			DELETE FROM tbl_conversation WHERE sender_id = (SELECT psid FROM tbl_chat_users WHERE chat_user_id = var_user_id);
+			DELETE FROM tbl_skype_conversation WHERE sender_id = (SELECT psid FROM tbl_chat_users WHERE chat_user_id = var_user_id);
+			DELETE FROM tbl_telegram_conversation WHERE sender_id = (SELECT psid FROM tbl_chat_users WHERE chat_user_id = var_user_id);
+			DELETE FROM tbl_web_widget_users_conversation WHERE web_user_uid = (SELECT web_user_uid FROM tbl_chat_users WHERE chat_user_id = var_user_id);
+			DELETE FROM tbl_chat_users WHERE chat_user_id = var_user_id;
+		END IF;
+	END IF;
+END
