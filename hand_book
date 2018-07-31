@@ -13,3 +13,21 @@ Created    : March - 2018
 .show   - Default settings details
 .header on - sequence format  -- .mode column
 .schema tablename
+
+comp519:htdocs compindiaAir$ sqlite3
+SQLite version 3.19.3 2017-06-27 16:48:08
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite> .show
+        echo: off
+         eqp: off
+     explain: auto
+     headers: off
+        mode: list
+   nullvalue: ""
+      output: stdout
+colseparator: "|"
+
+.headers on
+.databases
